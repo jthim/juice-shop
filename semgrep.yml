@@ -1,7 +1,7 @@
 # Semgrep configuration file
 rules:
     - id: detect-sensitive-console-logging
-      message: Potential data leak: Avoid logging sensitive object properties like password, token, or secret.
+      message: "Potential data leak: Avoid logging sensitive object properties like password, token, or secret."
       severity: WARNING
       languages:
           - javascript
@@ -9,13 +9,13 @@ rules:
       patterns:
           - pattern: console.$METHOD(...)
           - metavariable-regex:
-                metavariable: $METHOD
-                regex: ^(log|info|warn|error)$
+              metavariable: $METHOD
+              regex: ^(log|info|warn|error)$
           - pattern-either:
-                # Matches console.log(user.password), req.body.token, etc. able to look at deeply nested properties
-                - pattern: console.$METHOD(<... $OBJ.password ...>)
-                - pattern: console.$METHOD(<... $OBJ.token ...>)
-                - pattern: console.$METHOD(<... $OBJ.secret ...>)
+              # Matches console.log(user.password), req.body.token, etc. able to look at deeply nested properties
+              - pattern: console.$METHOD(<... $OBJ.password ...>)
+              - pattern: console.$METHOD(<... $OBJ.token ...>)
+              - pattern: console.$METHOD(<... $OBJ.secret ...>)
 
 
     - id: package-dependencies-check
@@ -48,9 +48,9 @@ rules:
       paths:
       include:
         - "*package.json"
-      message: Package dependencies with variant versions may lead to dependency
-      hijack and confusion attacks. Better to specify an exact version or use
-      package-lock.json for a specific version of the package.
+      message: "Package dependencies with variant versions may lead to dependency
+        hijack and confusion attacks. Better to specify an exact version or use
+        package-lock.json for a specific version of the package."
       languages:
       - json
       metadata:
