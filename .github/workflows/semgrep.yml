@@ -34,9 +34,10 @@ jobs:
             # Run local rules exclusively
             - name: Run Semgrep Scan (Local Rules Only)
               run: |
+                  set -e
                   if [ "${{ github.event_name }}" = "pull_request" ]; then
                     echo "Running strict PR scan using local rules..."
-                    semgrep scan --config=semgrep.yml
+                    semgrep scan --config=semgrep.yml --error
                   else
                     echo "Running non-blocking branch scan using local rules..."
                     semgrep scan --config=semgrep.yml || true
