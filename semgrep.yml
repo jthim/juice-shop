@@ -2,7 +2,7 @@
 rules:
     - id: detect-sensitive-console-logging
       message: 'Potential data leak: Avoid logging sensitive object properties like password, token, or secret.'
-      severity: WARNING
+      severity: ERROR
       languages:
           - javascript
           - typescript
