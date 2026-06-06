@@ -10,8 +10,6 @@ on:
     push:
         branches:
             - master
-        paths:
-            - .github/workflows/semgrep.yml
 
 permissions:
     contents: read
