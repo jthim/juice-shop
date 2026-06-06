@@ -34,9 +34,11 @@ jobs:
               run: |
                   set -e
                   if [ "${{ github.event_name }}" = "pull_request" ]; then
-                    echo "Running strict PR scan using local rules..."
+                    echo "--- DETECTED PULL REQUEST ---"
+                    echo "Running quick local verification scan..."
                     semgrep scan --config=semgrep.yml --error
                   else
-                    echo "Running non-blocking branch scan using local rules..."
-                    semgrep scan --config=semgrep.yml || true
+                    echo "--- DETECTED MAINLINE MERGE TO MASTER ---"
+                    echo "Initiating full scan"
+                    semgrep ci
                   fi
