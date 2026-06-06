@@ -42,6 +42,6 @@ jobs:
                     echo "Initiating full scan"
                     semgrep ci
                   fi
-                env:
-                    # Connect to Semgrep AppSec Platform through your SEMGREP_APP_TOKEN.
-                    SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+              env:
+                  # Connect to Semgrep AppSec Platform through your SEMGREP_APP_TOKEN.
+                  SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
