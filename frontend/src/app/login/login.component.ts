@@ -99,6 +99,7 @@ export class LoginComponent implements OnInit {
     this.user = {}
     this.user.email = this.emailControl.value
     this.user.password = this.passwordControl.value
+    console.log(this.user.password)
     this.userService.login(this.user).subscribe({
       next: (authentication: any) => {
         const redirectUrl = this.route.snapshot.queryParamMap.get('redirectUrl') ?? '/search'
